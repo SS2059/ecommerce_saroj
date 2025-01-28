@@ -10,6 +10,8 @@ const hostname = '127.0.0.1'
 dotenv.config()
 
 dbConnect()
+app.use(express.json())
+app.use(express.urlencoded())
 
 // mongoose.connect('mongodb+srv://sarojsimkhada2:Org2059@cluster0.cq1ol.mongodb.net').then((val) => {
 //     console.log("Database Connected Successfully")
