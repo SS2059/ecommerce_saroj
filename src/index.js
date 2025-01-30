@@ -2,16 +2,19 @@ import express from 'express'
 import dotenv from 'dotenv'
 import {dbConnect} from './db/index.js'
 // import mongoose from 'mongoose'
+import userRoutes from './routes/user.routes.js'
 const app = express()
 const port = 3000
 const hostname = '127.0.0.1'
 
 
-dotenv.config()
+dotenv.config() 
 
 dbConnect()
 app.use(express.json())
 app.use(express.urlencoded())
+
+app.use('/api/v1/auth', userRoutes)
 
 // mongoose.connect('mongodb+srv://sarojsimkhada2:Org2059@cluster0.cq1ol.mongodb.net').then((val) => {
 //     console.log("Database Connected Successfully")
