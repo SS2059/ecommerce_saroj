@@ -1,11 +1,16 @@
 import { Router } from "express";
-import { userRegister } from "../controllers/user.controller.js";
+import  {userLogin, userRegister}  from "../controllers/user.controller.js"
+import { upload } from "../middleware/multer.middleware.js";
+
+
 
 const router = Router()
 
-router.route("/register").post(userRegister)
+router.route("/register").post(upload.single("profile_pic"),userRegister)
+router.route("/login").post(userLogin)
+
  
-export default router
+export {router}
 
 
 // if there is default in export, then we can use any thing like (export default router), for tbis (app.use('/auth', userRoutes))
