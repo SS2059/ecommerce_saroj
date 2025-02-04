@@ -17,11 +17,11 @@ dbConnect().then(() => {
 }).catch((err) => {
     console.log("Error  while connecting", err);
 })
-
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(express.static("public"))
-app.use(cookieParser())
+
 
 app.use('/api/v1/auth', router)
 
