@@ -180,9 +180,17 @@ const genRefreshToken = async(req, res) => {
                 message: "Error while generating refreshtoken"
             })
         }
+
+      
+
         const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
         const user = await User.findById(decodedToken?._id).select("-password -refreshToken")
         console.log("user", user)
+
+        const {accessToken, refreshToken} = await generateAccessAndRefreshToken(user._id)
+        console.log('acs token', accessToken)
+        console.log('ref token', refreshToken)
+
         const options = {
             httpOnly: true,
             secure: true
