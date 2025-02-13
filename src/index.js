@@ -2,7 +2,9 @@ import express from 'express'
 import dotenv from 'dotenv'
 import {dbConnect} from './db/index.js'
 import cookieParser from 'cookie-parser'
-import {router} from './routes/user.routes.js'
+import userRoutes from './routes/user.routes.js'
+import productRoutes from './routes/product.routes.js'
+import orderRoutes from './routes/order.routes.js'
 const app = express()
 const port = 5000
 const hostname = '127.0.0.1'
@@ -23,7 +25,10 @@ app.use(express.urlencoded())
 app.use(express.static("public"))
 
 
-app.use('/api/v1/auth', router)
+app.use('/api/v1/auth', userRoutes)
+app.use('/api/v1/product', productRoutes)
+app.use('/api/v1/order', orderRoutes)
+
 
 // mongoose.connect('mongodb+srv://sarojsimkhada2:Org2059@cluster0.cq1ol.mongodb.net').then((val) => {
 //     console.log("Database Connected Successfully")

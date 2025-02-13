@@ -26,7 +26,7 @@ const userSchema = new  mongoose.Schema({
     },
     isAdmin:{
         type: Boolean,
-        default: false,
+        default: false
     },
     profile_pic: {
         type: String,
@@ -35,7 +35,6 @@ const userSchema = new  mongoose.Schema({
     refreshToken: {
         type:String,
     }
-
     },
     {
         timestamps: true,
